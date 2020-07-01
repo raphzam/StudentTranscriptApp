@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Transcript {
     private String firstName;
     private String lastName;
-    private int studentID;
+    private String studentID;
 
     private ArrayList<Course>courses;
 
@@ -12,7 +12,7 @@ public class Transcript {
     }
 
 
-    public Transcript (int studentID, String firstName, String lastName){ //transcript can be started with just first name and last name
+    public Transcript (String studentID, String firstName, String lastName){
         this.studentID = studentID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,11 +37,11 @@ public class Transcript {
         this.lastName = lastName;
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return this.studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
 
@@ -66,8 +66,6 @@ public class Transcript {
         return retval;
     }
 
-
-
     /*CALCULATE GPA
     double GPA;
     go through ArrayList of courses
@@ -83,7 +81,6 @@ public class Transcript {
         double points = 0;
         for (Course course : courses) {
 
-//            String grade = courses.get(i).getLetterGrade();    //get the letter grade
             String grade = course.getLetterGrade();
 
             grade = grade.toUpperCase();
@@ -114,6 +111,8 @@ public class Transcript {
 
     public String wholeTranscript(){
         //print header
+        System.out.println("Course\t\tCredits\t\tGrade\t\tQuality Points");
+        System.out.println("-------\t\t--------\t------\t\t-------------");
 
         String retval = "";
 
@@ -121,45 +120,27 @@ public class Transcript {
         get code, get credits, get grade, get quality points
         save to string,
         print string, new line
-
         repeat on next course
         repeat for size() of array
+        save all to string
+        return string;
          */
-
-        //save all to string
-        //return string;
 
         for (Course course : courses){
             String oneLine = "";
-            oneLine = course.getCourseCode() +"\t" + course.getNumOfCredits() + "\t" + course.getLetterGrade() + "\t" + course.getNumOfCredits() + "\n";
-//            System.out.println(oneLine);
-            retval+= oneLine = course.getCourseCode() +"\t" + course.getNumOfCredits() + "\t" + course.getLetterGrade() + "\t" + course.getNumOfCredits() + "\n";
+            oneLine = course.getCourseCode() +"\t\t\t " + course.getNumOfCredits() + "\t\t\t " + course.getLetterGrade() + "\t\t\t " + course.getNumOfCredits() + "\n";
+            retval+= oneLine;
 
         }
-
-
-
 
         return retval;
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
